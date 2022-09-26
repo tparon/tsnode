@@ -22,7 +22,7 @@ export const save = async (taskToSave: Task): Promise<Task> => {
 
   const task: Task = {
     ...taskToSave,
-    id: generateId(),
+    // id: generateId(),
   };
 
   tasks.push(task);

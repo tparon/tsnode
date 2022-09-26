@@ -19,7 +19,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
     volumes:
-      - mysql_volume:/var/usr/mysql
+      - mysql_volume:/var/lib/mysql
 
 volumes:
   mysql_volume:

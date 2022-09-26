@@ -8,6 +8,7 @@ COPY package.json .
 COPY package-lock.json .
 
 RUN npm ci
+RUN apk add curl
 
 COPY . .
 
