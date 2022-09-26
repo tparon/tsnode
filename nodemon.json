@@ -1,0 +1,6 @@
+{
+  "ignore": ["db"],
+  "execMap": {
+    "ts": "node -r ts-node/register --inspect=0.0.0.0:9222"
+  }
+}
