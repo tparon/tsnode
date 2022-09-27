@@ -27,5 +27,19 @@ const onSubmit = (event) => {
   })
     .then((res) => res.json())
     .then()
-    .then((data) => console.log(data));
+    .then((data) => console.log(data))
+    .then(messageHandler("Nice job!"));
+};
+
+let timeout;
+
+const messageHandler = (message) => {
+  const succesMessage = document.getElementById("success-message");
+  succesMessage.innerText = message;
+
+  clearTimeout(timeout);
+
+  timeeout = setTimeout(() => {
+    succesMessage.innerText = "";
+  }, 2000);
 };
