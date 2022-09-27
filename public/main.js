@@ -4,11 +4,19 @@ fetch("http://localhost:3000/api/tasks")
     tasks.forEach((task) => {
       const taskElem = document.createElement("div");
       taskElem.innerText = task.date + ": " + task.title;
-      document.body.appendChild(taskElem);
 
       const buttonElem = document.createElement("button");
-      buttonElem.innerHTML = "Delete";
-      document.body.append(buttonElem);
+      buttonElem.innerHTML = task.button;
+
+      document.body.appendChild(taskElem);
+      document.body.appendChild(buttonElem);
+
+      buttonElem.onclick = () => {
+        console.log(tasks.indexOf(task));
+        console.log(tasks.slice(tasks.indexOf(task), 1));
+        console.log(tasks);
+        messageHandler("Task is completed!");
+      };
     });
   });
 
@@ -18,15 +26,20 @@ const onSubmit = (event) => {
   const title = document.getElementById("task-title").value;
   const date = document.getElementById("date-input").value;
 
+  const button = "Delete";
+
+  if (title == "") {
+    return window.alert("Please fill the form");
+  }
+
   fetch("/api/tasks", {
     method: "POST",
     headers: {
       "Content-Type": "application/json;charset=utf-8",
     },
-    body: JSON.stringify({ title, date }),
+    body: JSON.stringify({ title, date, button }),
   })
     .then((res) => res.json())
-    .then()
     .then((data) => console.log(data))
     .then(messageHandler("Nice job!"));
 };
