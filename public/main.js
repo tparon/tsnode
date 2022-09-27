@@ -13,8 +13,6 @@ fetch("http://localhost:3000/api/tasks")
 
       buttonElem.onclick = () => {
         console.log(tasks.indexOf(task));
-        console.log(tasks.slice(tasks.indexOf(task), 1));
-        console.log(tasks);
         messageHandler("Task is completed!");
       };
     });
